@@ -1,1 +1,32 @@
+def chatbot():
+    print("Chatbot: Hello! Welcome to our service. How can I help you?")
+    
+    while True:
+        user = input("You: ").lower()
 
+        # Exit condition
+        if user in ["bye", "exit", "quit"]:
+            print("Chatbot: Thank you! Have a nice day 😊")
+            break
+
+        # Basic responses
+        elif "hello" in user or "hi" in user:
+            print("Chatbot: Hello! How can I assist you?")
+
+        elif "price" in user:
+            print("Chatbot: Our product prices start from ₹500.")
+
+        elif "order" in user:
+            print("Chatbot: You can place an order on our website.")
+
+        elif "delivery" in user:
+            print("Chatbot: Delivery takes 3-5 business days.")
+
+        elif "contact" in user:
+            print("Chatbot: You can contact us at support@email.com")
+
+        else:
+            print("Chatbot: Sorry, I didn't understand that. Please ask something else.")
+
+# Run chatbot
+chatbot()
