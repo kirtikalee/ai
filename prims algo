@@ -1,0 +1,27 @@
+import heapq
+
+graph = {
+    'A': [('B', 2), ('C', 3)],
+    'B': [('A', 2), ('C', 1), ('D', 1)],
+    'C': [('A', 3), ('B', 1), ('D', 4)],
+    'D': [('B', 1), ('C', 4)]
+}
+
+def prim(graph, start):
+    visited = set()
+    pq = [(0, start)]
+    total_cost = 0
+
+    while pq:
+        cost, node = heapq.heappop(pq)
+        if node not in visited:
+            visited.add(node)
+            total_cost += cost
+
+            for neighbor, weight in graph[node]:
+                if neighbor not in visited:
+                    heapq.heappush(pq, (weight, neighbor))
+
+    return total_cost
+
+print("MST Cost:", prim(graph, 'A'))
