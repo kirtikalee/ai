@@ -1,0 +1,25 @@
+edges = [('A','B',2),('B','C',1),('A','C',3),('B','D',1),('C','D',4)]
+
+parent = {}
+
+def find(x):
+    if parent[x] == x:
+        return x
+    return find(parent[x])
+
+def union(x,y):
+    parent[find(x)] = find(y)
+
+nodes = ['A','B','C','D']
+for n in nodes:
+    parent[n] = n
+
+edges.sort(key=lambda x:x[2])
+cost = 0
+
+for u,v,w in edges:
+    if find(u) != find(v):
+        union(u,v)
+        cost += w
+
+print("MST Cost:", cost)
